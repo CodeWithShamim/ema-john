@@ -1,4 +1,21 @@
+.product {
+    width: 300px;
+    height: 510px;
+}
+
 .product img {
-    width: 286px;
+    /* background-color: rgb(171, 213, 250); */
+    width: 100%;
     height: 286px;
+    border-radius: 20px;
+    /* border: 2px solid red; */
+}
+
+.product-name {
+    font-family: "Lato";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 21px;
+    line-height: 25px;
+    letter-spacing: 0.0015em;
 }
