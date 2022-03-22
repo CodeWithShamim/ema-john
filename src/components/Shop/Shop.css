@@ -9,3 +9,9 @@
     grid-template-columns: repeat(3, 1fr);
     grid-gap: 45px;
 }
+
+@media screen and (max-width: 1200px) {
+    .products-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}

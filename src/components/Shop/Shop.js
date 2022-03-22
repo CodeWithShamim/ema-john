@@ -9,9 +9,16 @@ const Shop = () => {
         .then(data=>setProducts(data));
     },[]);
 
+
+    const [cart, setCart] = useState([]);
     const addToCart = (product)=>{
-        console.log(product);
+        const newCart = [...cart, product];
+        setCart(newCart);
+        
     }
+    console.log(cart);
+
+    
     return (
         <div className='shop-container'>
             <div className="products-container">
@@ -19,6 +26,10 @@ const Shop = () => {
             </div>
             <div className="cart-container">
                 <h2 className='title'>Order Summary</h2>
+                <div>
+                    <p>Selected Item: {cart.length}</p>
+                    {/* <h3>Total Price: ${cart.price}</h3> */}
+                </div>
             </div>
         </div>
     );
