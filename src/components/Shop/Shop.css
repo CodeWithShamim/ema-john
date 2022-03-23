@@ -6,5 +6,5 @@
 .sticky-item {
     height: 100vh;
     position: sticky;
-    top: 10px;
+    top: 100px;
 }
