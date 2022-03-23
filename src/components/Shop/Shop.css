@@ -1,7 +1,10 @@
 .shop-container {
     padding: 50px;
+    position: relative;
 }
 
-.cart-container {
-    text-align: center;
+.sticky-item {
+    height: 100vh;
+    position: sticky;
+    top: 10px;
 }
