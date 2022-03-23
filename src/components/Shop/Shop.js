@@ -15,7 +15,17 @@ const Shop = () => {
 
     const [cart, setCart] = useState([]);
     const addToCart = (product)=>{
-        const newCart = [...cart, product];
+        const exits = cart.find(findItem=> findItem.id === product.id);
+        let newCart = [];
+        if(!exits){
+            product.quantity =1;
+             newCart = [...cart, product];
+        }else{
+            const rest = cart.filter(findItem=> findItem.id!==product.id)
+            exits.quantity = exits.quantity +1;
+            newCart = [...rest, exits];
+        }
+       
         setCart(newCart);
         addToDb(product.id)
         

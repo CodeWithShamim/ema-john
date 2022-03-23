@@ -9,7 +9,7 @@ const Cart = ({cart}) => {
     let quantity = 0;
     for(const product of cart){
         quantity = quantity + product.quantity;
-        totalPrice = (totalPrice + product.price)*product.quantity;
+        totalPrice = totalPrice + product.price*product.quantity;
         shippingCharge = shippingCharge + product.shipping;
     }
     const tax = (totalPrice * 0.1).toFixed(2);
