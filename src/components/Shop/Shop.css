@@ -1,21 +1,7 @@
 .shop-container {
-    display: grid;
-    grid-template-columns: 4fr 1fr;
-    margin: 20px;
-}
-
-.products-container {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-gap: 45px;
+    padding: 50px;
 }
 
 .cart-container {
     text-align: center;
-}
-
-@media screen and (max-width: 1200px) {
-    .products-container {
-        grid-template-columns: repeat(2, 1fr);
-    }
 }

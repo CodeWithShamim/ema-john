@@ -4,6 +4,7 @@
     border: 1px solid #95a0a7;
     border-radius: 8px;
     position: relative;
+    /* text-align: center; */
 }
 
 .product img {
@@ -11,8 +12,6 @@
     width: 95%;
     height: 280px;
     border-radius: 20px;
-    /* margin: 0 auto; */
-    padding: 7px;
 }
 
 .product-name {
@@ -35,7 +34,7 @@
 
 .product-info {
     margin-top: 20px;
-    padding: 7px;
+    padding-left: 7px;
 }
 
 .cartButton {
@@ -50,6 +49,13 @@
     border-radius: 0px 0px 8px 8px;
     position: absolute;
     bottom: 0px;
+    left: 0px;
+    right: 0px;
+}
+
+.cartButton p {
+    margin: 0px;
+    padding: 12px;
 }
 
 .cartButton:hover {
