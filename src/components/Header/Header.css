@@ -1,5 +1,6 @@
 .header-nav {
     height: 80px;
+    width: 100%;
     background-color: #1c2b35;
     display: flex;
     justify-content: space-between;
@@ -33,7 +34,6 @@
         position: static;
     }
     .header-info {
-        display: flex;
-        flex-direction: column;
+        display: none;
     }
 }
