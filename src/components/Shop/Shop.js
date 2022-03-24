@@ -28,6 +28,13 @@ const Shop = () => {
        
         setCart(newCart);
         addToDb(product.id)
+
+
+        // scrollin window for mobile devie 
+        console.log(window.innerHeight);
+        if(window.innerHeight <= 576){
+            window.scrollTo(100, 0);
+        }
         
     }
 
