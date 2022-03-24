@@ -9,10 +9,10 @@
 @media only screen and (max-width: 576px) {
     .product-info {
         display: flex;
+        box-sizing: border-box;
     }
     .product-info p {
-        margin-left: 12px;
-        box-sizing: border-box;
+        margin-left: 8px;
     }
     .title {
         margin-top: 0px;
