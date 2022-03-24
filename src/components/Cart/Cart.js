@@ -16,7 +16,9 @@ const Cart = ({cart}) => {
     const grandTotal = totalPrice + shippingCharge + parseFloat(tax);
 
     return (
-        <div className='cart'>
+        <div data-aos="zoom-in-up"
+        data-aos-duration="3000"
+        className='cart'>
             <h2 className='title'>Order Summary</h2>
             <div className='product-info'>
                 <p>Selected Item: {quantity}</p>

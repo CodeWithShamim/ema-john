@@ -7,7 +7,9 @@ import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
 const Product = (props) => {
     const {img,name,price,seller,ratings} = props.product;
     return (
-        <div className='product col-md-5 mx-4'>
+        <div data-aos="flip-left"
+        data-aos-easing="linear"
+        data-aos-duration="1500" className='product col-md-5 mx-4'>
             <div className='text-center'>
                 <img src={img} alt="" />
             </div>

@@ -8,10 +8,9 @@
     .cart-container {
         background-color: aqua;
         height: 180px;
-        position: sticky;
+        /* position: sticky; */
         top: 80px;
         left: 0;
         right: 0;
-        z-index: 1;
     }
 }
