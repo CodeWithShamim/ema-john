@@ -52,7 +52,7 @@ const Shop = () => {
 
     
     return (
-        <div className='shop-container p-4 row'>
+        <div className='shop-container row p-4'>
             <div className="products-container col-md-8 order-2 order-md-1">
                 <div className='row gy-5'>
                      {products.map(product=><Product key={product.id} product={product} addToCart={addToCart}></Product>)}

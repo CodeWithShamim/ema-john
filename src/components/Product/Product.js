@@ -9,7 +9,7 @@ const Product = (props) => {
     return (
         <div data-aos="flip-left"
         data-aos-easing="linear"
-        data-aos-duration="1500" className='product col-md-5 mx-4'>
+        data-aos-duration="1500" className='product col-md-5 mx-0 mx-md-4'>
             <div className='text-center'>
                 <img src={img} alt="" />
             </div>
