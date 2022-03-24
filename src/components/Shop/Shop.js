@@ -31,9 +31,9 @@ const Shop = () => {
 
 
         // scrollin window for mobile devie 
-        console.log(window.innerHeight);
-        if(window.innerHeight <= 576){
-            window.scrollTo(100, 0);
+        console.log(window.innerWidth);
+        if(window.innerWidth <= 576){
+            window.scrollTo(0, 80);
         }
         
     }
