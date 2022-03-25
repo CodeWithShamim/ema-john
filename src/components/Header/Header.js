@@ -21,6 +21,8 @@ const Header=() => {
                     <a href="https://ema-john-shamim.netlify.app/">Order</a>
                     <a href="https://ema-john-shamim.netlify.app/">Order Review</a>
                     <a href="https://ema-john-shamim.netlify.app/">Manage Inventory</a>
+                    <a href="https://ema-john-shamim.netlify.app/">About</a>
+                    <a href="https://ema-john-shamim.netlify.app/">Privacy & Policy</a>
                 </div>
             </nav>
         </div>
