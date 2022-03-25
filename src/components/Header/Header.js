@@ -5,6 +5,7 @@ import './Header.css';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import { faBars } from '@fortawesome/free-solid-svg-icons';
 
+
 const Header=() => {
     return (
         <div className='row header-sticky'>
@@ -17,8 +18,8 @@ const Header=() => {
                 </div>
                 <div className='barContainer'>
                     <input type="checkbox" id='check'/>
-                    <label htmlFor="check">
-                        <FontAwesomeIcon icon={faBars} className='barIcon'></FontAwesomeIcon>
+                    <label htmlFor="check" className='barIcon'>
+                        <FontAwesomeIcon icon={faBars}></FontAwesomeIcon>
                     </label>
                 </div>
             </nav>
