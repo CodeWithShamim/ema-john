@@ -33,7 +33,7 @@ const Shop = () => {
         // scrollin window for mobile devie 
         console.log(window.innerWidth);
         if(window.innerWidth <= 576){
-            window.scrollTo(0, 80);
+            window.scrollTo(0, 20);
         }
         
     }
