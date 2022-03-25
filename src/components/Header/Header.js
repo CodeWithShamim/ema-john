@@ -11,16 +11,16 @@ const Header=() => {
         <div className='row header-sticky'>
             <nav className='header-nav col-md-12 header-sticky'>
                 <a href="https://ema-john-shamim.netlify.app/"><img src={logo} alt="" /></a>
+
+       
+                <input type="checkbox" id='check'/>
+                <label htmlFor="check" className='barIcon'>
+                    <FontAwesomeIcon icon={faBars}></FontAwesomeIcon>
+                </label>
                 <div className='me-5 header-info'>
                     <a href="https://ema-john-shamim.netlify.app/">Order</a>
                     <a href="https://ema-john-shamim.netlify.app/">Order Review</a>
                     <a href="https://ema-john-shamim.netlify.app/">Manage Inventory</a>
-                </div>
-                <div className='barContainer'>
-                    <input type="checkbox" id='check'/>
-                    <label htmlFor="check" className='barIcon'>
-                        <FontAwesomeIcon icon={faBars}></FontAwesomeIcon>
-                    </label>
                 </div>
             </nav>
         </div>
