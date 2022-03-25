@@ -29,10 +29,27 @@
     z-index: 1;
 }
 
-@media screen and (max-width: 576px) {
-    .header-sticky {
-        position: static;
+.barIcon {
+    color: white;
+    font-size: 24px;
+    margin-right: 60px;
+    display: none;
+}
+
+#check {
+    display: none;
+}
+
+@media screen and (max-width: 972px) {
+    .barIcon {
+        display: block;
     }
+    .header-info {
+        display: none;
+    }
+    /* .header-sticky {
+        position: static;
+    } */
     .header-info {
         display: none;
     }

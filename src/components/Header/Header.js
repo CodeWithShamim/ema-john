@@ -1,6 +1,9 @@
 import React from 'react';
 import logo from '../../images/Logo.svg';
 import './Header.css';
+// FontAwesomeIcon
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
+import { faBars } from '@fortawesome/free-solid-svg-icons';
 
 const Header=() => {
     return (
@@ -11,6 +14,12 @@ const Header=() => {
                     <a href="https://ema-john-shamim.netlify.app/">Order</a>
                     <a href="https://ema-john-shamim.netlify.app/">Order Review</a>
                     <a href="https://ema-john-shamim.netlify.app/">Manage Inventory</a>
+                </div>
+                <div className='barContainer'>
+                    <input type="checkbox" id='check'/>
+                    <label htmlFor="check">
+                        <FontAwesomeIcon icon={faBars} className='barIcon'></FontAwesomeIcon>
+                    </label>
                 </div>
             </nav>
         </div>
