@@ -6,6 +6,12 @@ import 'aos/dist/aos.css'
 // bootstrap
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {useEffect} from 'react';
+import {Route, Routes} from 'react-router-dom';
+import NotFound from './components/NotFound/NotFound';
+import OrderReview from './components/OrderReview/OrderReview';
+import ManageInventory from './components/ManageInventory/ManageInventory';
+import About from './components/About/About';
+import PrivacyPolicy from './components/PrivacyPolicy/PrivacyPolicy';
 
 function App() {
 
@@ -16,7 +22,16 @@ function App() {
   return (
     <div>
       <Header></Header>
-      <Shop></Shop>
+      <Routes>
+        <Route path='/' element={<Shop></Shop>}></Route>
+        <Route path='/shop' element={<Shop></Shop>}></Route>
+        <Route path='/order-review' element={<OrderReview></OrderReview>}></Route>
+        <Route path='/manage-inventory' element={<ManageInventory></ManageInventory>}></Route>
+        <Route path='/about' element={<About></About>}></Route>
+        <Route path='/privacy&policy' element={<PrivacyPolicy></PrivacyPolicy>}></Route>
+        {/* ----------------Not Found------------------ */}
+        <Route path='*' element={<NotFound></NotFound>}></Route>
+      </Routes>
     </div>
   );
 }

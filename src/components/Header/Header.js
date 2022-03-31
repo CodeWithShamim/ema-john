@@ -4,13 +4,14 @@ import './Header.css';
 // FontAwesomeIcon
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import { faBars } from '@fortawesome/free-solid-svg-icons';
+import {Link} from 'react-router-dom';
 
 
 const Header=() => {
     return (
         <div className='row header-sticky'>
             <nav className='header-nav col-md-12 header-sticky'>
-                <a href="https://ema-john-shamim.netlify.app/"><img src={logo} alt="" /></a>
+                <Link to='/'><img src={logo} alt="" /></Link>
 
        
                 <input type="checkbox" id='check'/>
@@ -18,11 +19,11 @@ const Header=() => {
                     <FontAwesomeIcon icon={faBars}></FontAwesomeIcon>
                 </label>
                 <div className='me-5 header-info'>
-                    <a href="https://ema-john-shamim.netlify.app/">Order</a>
-                    <a href="https://ema-john-shamim.netlify.app/">Order Review</a>
-                    <a href="https://ema-john-shamim.netlify.app/">Manage Inventory</a>
-                    <a href="https://ema-john-shamim.netlify.app/">About</a>
-                    <a href="https://ema-john-shamim.netlify.app/">Privacy & Policy</a>
+                    <Link to="/shop">Shop</Link>
+                    <Link to="/order-review">Order Review</Link>
+                    <Link to="/manage-inventory">Manage Inventory</Link>
+                    <Link to="/about">About</Link>
+                    <Link to="/privacy&policy">Privacy & Policy</Link>
                 </div>
             </nav>
         </div>
