@@ -6,6 +6,9 @@ import './Shop.css';
 import useProducts from '../../hooks/useProducts';
 import useCart from '../../hooks/useCart';
 import {addToDb} from '../../utilities/fakedb';
+import {Link} from 'react-router-dom';
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
+import {faArrowRight} from '@fortawesome/free-solid-svg-icons';
 
 const Shop = () => {
     const [products, setProducts] = useProducts();
@@ -71,7 +74,11 @@ const Shop = () => {
             </div>
             <div className="cart-container col-md-4 order-1 order-md-2">
                 <div className="sticky-item">
-                    <Cart cart={cart}></Cart>
+                    <Cart cart={cart}>
+                        <Link to='/order-review'>
+                           <button className='border-0 px-3 py-2 fw-bold text-white bg-danger rounded m-3'>Review Order <FontAwesomeIcon icon={faArrowRight}></FontAwesomeIcon></button>
+                        </Link>
+                    </Cart>
                 </div>
             </div>
         </div>
