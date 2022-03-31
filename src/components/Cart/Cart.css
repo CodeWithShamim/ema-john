@@ -7,16 +7,6 @@
 }
 
 @media only screen and (max-width: 576px) {
-    .product-info {
-        display: flex;
-        box-sizing: border-box;
-    }
-    .product-info p {
-        margin-left: 8px;
-    }
-    /* .product-info h5 {
-        margin-right: 10px;
-    } */
     .title {
         margin-top: 0px;
     }

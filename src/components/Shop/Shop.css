@@ -6,12 +6,7 @@
 
 @media only screen and (max-width: 576px) {
     .cart-container {
-        background-color: aqua;
-        height: 220px;
-        /* position: sticky; */
-        top: 80px;
-        left: 0;
-        right: 0;
-        margin-bottom: 20px;
+        height: 70vh;
+        margin-bottom: 40px;
     }
 }

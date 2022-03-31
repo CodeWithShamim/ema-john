@@ -4,24 +4,25 @@ import React from 'react';
 import {Link} from 'react-router-dom';
 import useCart from '../../hooks/useCart';
 import useProducts from '../../hooks/useProducts';
-import {deleteShoppingCart, removeFromDb} from '../../utilities/fakedb';
+import {deleteShoppingCart,removeFromDb} from '../../utilities/fakedb';
 import Cart from '../Cart/Cart';
 import ReviewItems from '../ReviewItems/ReviewItems';
+import './OrderReview.css'
 
 const OrderReview=() => {
     const [products,setProducts]=useProducts();
     const [cart,setCart]=useCart(products);
     // console.log(cart);
 
-    const removeItem = (id)=>{
+    const removeItem=(id) => {
         console.log(id);
-        const findProduct = cart.filter(item=> item.id !== id);
+        const findProduct=cart.filter(item => item.id!==id);
         setCart(findProduct);
         // remove from local Storage
         removeFromDb(id);
     };
 
-    const clearCart = () => {
+    const clearCart=() => {
         deleteShoppingCart();
         setCart([])
 
@@ -37,8 +38,8 @@ const OrderReview=() => {
                     <div className='sticky-item'>
                         <Cart cart={cart} clearCart={clearCart}>
                             <Link to='/manage-inventory'>
-                                 <button className='border-0 px-5 py-2 fw-bold text-white bg-warning rounded m-3'>Proceed Checkout <FontAwesomeIcon icon={faArrowRight}></FontAwesomeIcon></button>
-                            </Link> 
+                                <button className='border-0 px-5 py-2 fw-bold text-white bg-warning rounded m-3'>Proceed Checkout <FontAwesomeIcon icon={faArrowRight}></FontAwesomeIcon></button>
+                            </Link>
                         </Cart>
                     </div>
                     <div>
