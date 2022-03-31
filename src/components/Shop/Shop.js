@@ -1,15 +1,37 @@
-import React, {useEffect, useState} from 'react';
+// import React, {useEffect, useState} from 'react';
 import Cart from '../Cart/Cart';
 import Product from '../Product/Product';
 import './Shop.css';
-import {addToDb, getStoredCart} from '../../utilities/fakedb';
+// import {addToDb, getStoredCart} from '../../utilities/fakedb';
 import useProducts from '../../hooks/useProducts';
+import useCart from '../../hooks/useCart';
+import {addToDb} from '../../utilities/fakedb';
 
 const Shop = () => {
     const [products, setProducts] = useProducts();
    
 
-    const [cart, setCart] = useState([]);
+    // const [cart, setCart] = useState([]);
+    //  // getStordCart 
+    //  useEffect(()=>{
+    //     const storedCart = getStoredCart();
+    //     const savedCart = []
+    //     for(const id in storedCart){
+    //         // console.log(id);
+    //         const findProduct = products.find(product=> product.id===id);
+    //         if(findProduct){
+    //             const quantity = storedCart[id];
+    //             findProduct.quantity = quantity;
+    //             savedCart.push(findProduct);
+    //         }
+    //     }
+    //     setCart(savedCart);
+    // },[products])
+
+    const [cart, setCart] = useCart(products);
+
+
+
     const addToCart = (product)=>{
         const exits = cart.find(findItem=> findItem.id === product.id);
         let newCart = [];
@@ -35,21 +57,7 @@ const Shop = () => {
     }
 
 
-    // getStordCart 
-    useEffect(()=>{
-        const storedCart = getStoredCart();
-        const savedCart = []
-        for(const id in storedCart){
-            // console.log(id);
-            const findProduct = products.find(product=> product.id===id);
-            if(findProduct){
-                const quantity = storedCart[id];
-                findProduct.quantity = quantity;
-                savedCart.push(findProduct);
-            }
-        }
-        setCart(savedCart);
-    },[products])
+   
     
     // console.log(cart);
 
