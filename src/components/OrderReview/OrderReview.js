@@ -1,7 +1,10 @@
+import {faArrowRight} from '@fortawesome/free-solid-svg-icons';
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import React from 'react';
+import {Link} from 'react-router-dom';
 import useCart from '../../hooks/useCart';
 import useProducts from '../../hooks/useProducts';
-import {removeFromDb} from '../../utilities/fakedb';
+import {deleteShoppingCart, removeFromDb} from '../../utilities/fakedb';
 import Cart from '../Cart/Cart';
 import ReviewItems from '../ReviewItems/ReviewItems';
 
@@ -18,6 +21,12 @@ const OrderReview=() => {
         removeFromDb(id);
     };
 
+    const clearCart = () => {
+        deleteShoppingCart();
+        setCart([])
+
+    }
+
     return (
         <div>
             <div className="row">
@@ -26,7 +35,11 @@ const OrderReview=() => {
                 </div>
                 <div className="cart-container col-md-4 order-1 order-md-2">
                     <div className='sticky-item'>
-                        <Cart cart={cart}></Cart>
+                        <Cart cart={cart} clearCart={clearCart}>
+                            <Link to='/manage-inventory'>
+                                 <button className='border-0 px-5 py-2 fw-bold text-white bg-warning rounded m-3'>Proceed Checkout <FontAwesomeIcon icon={faArrowRight}></FontAwesomeIcon></button>
+                            </Link> 
+                        </Cart>
                     </div>
                     <div>
                     </div>

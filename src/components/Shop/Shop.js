@@ -5,13 +5,14 @@ import './Shop.css';
 // import {addToDb, getStoredCart} from '../../utilities/fakedb';
 import useProducts from '../../hooks/useProducts';
 import useCart from '../../hooks/useCart';
-import {addToDb} from '../../utilities/fakedb';
+import {addToDb, deleteShoppingCart} from '../../utilities/fakedb';
 import {Link} from 'react-router-dom';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {faArrowRight} from '@fortawesome/free-solid-svg-icons';
 
 const Shop = () => {
-    const [products, setProducts] = useProducts();
+    // const [products, setProducts] = useProducts();
+    const [products] = useProducts();
    
 
     // const [cart, setCart] = useState([]);
@@ -33,7 +34,12 @@ const Shop = () => {
 
     const [cart, setCart] = useCart(products);
 
+// clear cart from local storage 
+const clearCart = () => {
+    deleteShoppingCart();
+    setCart([])
 
+}
 
     const addToCart = (product)=>{
         const exits = cart.find(findItem=> findItem.id === product.id);
@@ -74,9 +80,9 @@ const Shop = () => {
             </div>
             <div className="cart-container col-md-4 order-1 order-md-2">
                 <div className="sticky-item">
-                    <Cart cart={cart}>
+                    <Cart cart={cart} clearCart={clearCart}>
                         <Link to='/order-review'>
-                           <button className='border-0 px-3 py-2 fw-bold text-white bg-danger rounded m-3'>Review Order <FontAwesomeIcon icon={faArrowRight}></FontAwesomeIcon></button>
+                           <button className='border-0 px-3 py-2 fw-bold text-white bg-primary rounded m-3'>Review Order <FontAwesomeIcon icon={faArrowRight}></FontAwesomeIcon></button>
                         </Link>
                     </Cart>
                 </div>
