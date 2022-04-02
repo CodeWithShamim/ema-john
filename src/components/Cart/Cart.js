@@ -18,7 +18,7 @@ const Cart = ({ cart, children, clearCart }) => {
   const grandTotal = totalPrice + shippingCharge + parseFloat(tax);
 
   return (
-    <div data-aos="fade-in-up" data-aos-duration="3000" className="cart">
+    <div data-aos="fade-in-up" data-aos-duration="2500" className="cart">
       <h2 className="title">Order Summary</h2>
       <div className="product-info">
         <p>Selected Item: {quantity}</p>
