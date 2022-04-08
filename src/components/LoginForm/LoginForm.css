@@ -24,3 +24,16 @@
     background-color: transparent;
     color: #fff;
 }
+
+.github-item {
+    background-color: #118be4;
+    border-radius: 50px;
+    height: 45px;
+    width: 45px;
+}
+
+@media screen and (max-width: 768px) {
+    .login-container {
+        width: 95% !important;
+    }
+}

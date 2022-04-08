@@ -2,14 +2,16 @@ import React from "react";
 import { Link } from "react-router-dom";
 import logo from "../../images/Logo.svg";
 import google from "../../images/google.png";
+import github from "../../images/github.png";
+import facebook from "../../images/facebook.png";
+import twitter from "../../images/twitter.png";
 import "./LoginForm.css";
 
 const LoginForm = () => {
   return (
     <div className="text-center">
-      <div className="w-50 mx-auto login-container mt-5">
-        <img className="logo mt-5" src={logo} alt="logo" />
-        <br />
+      <div className="w-50 mx-auto login-container mt-3">
+        <img className="logo" src={logo} alt="logo" />
         <br />
         <form>
           <div className=" text-start">
@@ -49,13 +51,24 @@ const LoginForm = () => {
             Login
           </button>
         </form>
-        <p className="bg-light rounded w-75 mx-auto my-4">
+        <p className="bg-light rounded mx-auto my-3">
           <hr />
         </p>
         <p>Continue With.... </p>
-        <span>
-          <img src={google} alt="" />
-        </span>
+        <div className="icon-container d-flex justify-content-evenly">
+          <span>
+            <img src={google} alt="google icon" />
+          </span>
+          <span>
+            <img src={github} className="github-item" alt="github icon" />
+          </span>
+          <span>
+            <img src={facebook} alt="facebook icon" />
+          </span>
+          <span>
+            <img src={twitter} alt="twitter icon" />
+          </span>
+        </div>
       </div>
     </div>
   );
