@@ -1,0 +1,30 @@
+/*
+
+import { createUserWithEmailAndPassword } from "firebase/auth";
+import { useState } from "react";
+import { auth } from "../firebase.init";
+
+const useEmailPass = () => {
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+
+    const handleEmailBlur = (e) => {
+        setEmail(e.target.value);
+    };
+    const handlePasswordBlur = (e) => {
+        setPassword(e.target.value);
+    };
+    //   console.log(email, password);
+
+    //   -----------------------------------------
+    const handleRegisterAndLogin = (e) => {
+        e.preventDefault();
+        console.log(email, password);
+        createUserWithEmailAndPassword(auth, email, password)
+            .then((result) => console.log(result.user))
+            .catch((error) => console.log(error));
+    };
+    return [handleEmailBlur, handlePasswordBlur, handleRegisterAndLogin]
+}
+export { useEmailPass };
+*/

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import logo from "../../images/Logo.svg";
 import google from "../../images/google.png";
 import github from "../../images/github.png";
@@ -13,6 +13,8 @@ import { createUserWithEmailAndPassword } from "firebase/auth";
 const RegisterForm = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  //   -----------navigate-------------
+  const navigate = useNavigate();
 
   const handleEmailBlur = (e) => {
     setEmail(e.target.value);
@@ -23,11 +25,15 @@ const RegisterForm = () => {
   //   console.log(email, password);
 
   //   -----------------------------------------
-  const handleLogin = (e) => {
+  const handleRegister = (e) => {
     e.preventDefault();
     console.log(email, password);
     createUserWithEmailAndPassword(auth, email, password)
-      .then((result) => console.log(result.user))
+      .then((result) => {
+        console.log(result.user);
+        console.log("succesfully register .....");
+        navigate("/");
+      })
       .catch((error) => console.log(error));
   };
   return (
@@ -35,7 +41,7 @@ const RegisterForm = () => {
       <div className="w-50 mx-auto login-container mt-3">
         <img className="logo" src={logo} alt="logo" />
         <br />
-        <form onSubmit={handleLogin}>
+        <form onSubmit={handleRegister}>
           <div className=" text-start">
             <div class="mb-3">
               <label for="exampleInputText" class="form-label">

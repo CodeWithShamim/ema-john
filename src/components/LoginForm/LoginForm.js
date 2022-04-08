@@ -1,25 +1,53 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import logo from "../../images/Logo.svg";
 import google from "../../images/google.png";
 import github from "../../images/github.png";
 import facebook from "../../images/facebook.png";
 import twitter from "../../images/twitter.png";
 import "./LoginForm.css";
+import { signInWithEmailAndPassword } from "firebase/auth";
+import { auth } from "../../firebase.init";
 
 const LoginForm = () => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  //   -----------navigate-------------
+  const navigate = useNavigate();
+
+  const handleEmailBlur = (e) => {
+    setEmail(e.target.value);
+  };
+  const handlePasswordBlur = (e) => {
+    setPassword(e.target.value);
+  };
+  //   console.log(email, password);
+
+  //   -----------------------------------------
+  const handleLogin = (e) => {
+    e.preventDefault();
+    // console.log(email, password);
+    signInWithEmailAndPassword(auth, email, password)
+      .then((result) => {
+        console.log(result);
+        console.log("succesfully login .....");
+        navigate("/");
+      })
+      .catch((error) => console.log(error));
+  };
   return (
     <div className="text-center">
       <div className="w-50 mx-auto login-container mt-3">
         <img className="logo" src={logo} alt="logo" />
         <br />
-        <form>
+        <form onSubmit={handleLogin}>
           <div className=" text-start">
             <div class="mb-3">
               <label for="exampleInputEmail1" class="form-label">
                 Email
               </label>
               <input
+                onBlur={handleEmailBlur}
                 type="email"
                 className="form-control"
                 id="exampleInputEmail1"
@@ -34,6 +62,7 @@ const LoginForm = () => {
                 Password
               </label>
               <input
+                onBlur={handlePasswordBlur}
                 type="password"
                 class="form-control"
                 id="exampleInputPassword1"
@@ -45,7 +74,7 @@ const LoginForm = () => {
           </div>
 
           <button
-            type="button"
+            type="submit"
             className="login-btn btn btn-warning w-100 fw-bold fs-4"
           >
             Login
