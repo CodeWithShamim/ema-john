@@ -13,6 +13,7 @@ import ManageInventory from "./components/ManageInventory/ManageInventory";
 import About from "./components/About/About";
 import PrivacyPolicy from "./components/PrivacyPolicy/PrivacyPolicy";
 import LoginForm from "./components/LoginForm/LoginForm";
+import RegisterForm from "./components/RegisterForm/RegisterForm";
 
 function App() {
   useEffect(() => {
@@ -25,6 +26,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Shop></Shop>}></Route>
         <Route path="/login" element={<LoginForm></LoginForm>}></Route>
+        <Route path="/signup" element={<RegisterForm></RegisterForm>}></Route>
         <Route path="/shop" element={<Shop></Shop>}></Route>
         <Route
           path="/order-review"
