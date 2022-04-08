@@ -29,7 +29,7 @@ const Header = () => {
           <ActiveLink to="/privacy&policy">Privacy & Policy</ActiveLink>
         </div>
         <div>
-          <Link to="/login" className="text-light fw-bold fs-5 me-2">
+          <Link to="/login" className="text-light fw-bold me-2">
             Login
             <span className="ms-1">
               <img

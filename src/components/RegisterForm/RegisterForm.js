@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import logo from "../../images/Logo.svg";
 import google from "../../images/google.png";
@@ -6,14 +6,36 @@ import github from "../../images/github.png";
 import facebook from "../../images/facebook.png";
 import twitter from "../../images/twitter.png";
 // import "./RegisterForm.css";
+// firebae ------------------------------------------
+import { auth } from "../../firebase.init";
+import { createUserWithEmailAndPassword } from "firebase/auth";
 
 const RegisterForm = () => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const handleEmailBlur = (e) => {
+    setEmail(e.target.value);
+  };
+  const handlePasswordBlur = (e) => {
+    setPassword(e.target.value);
+  };
+  //   console.log(email, password);
+
+  //   -----------------------------------------
+  const handleLogin = (e) => {
+    e.preventDefault();
+    console.log(email, password);
+    createUserWithEmailAndPassword(auth, email, password)
+      .then((result) => console.log(result.user))
+      .catch((error) => console.log(error));
+  };
   return (
     <div className="text-center">
       <div className="w-50 mx-auto login-container mt-3">
         <img className="logo" src={logo} alt="logo" />
         <br />
-        <form>
+        <form onSubmit={handleLogin}>
           <div className=" text-start">
             <div class="mb-3">
               <label for="exampleInputText" class="form-label">
@@ -35,6 +57,7 @@ const RegisterForm = () => {
                 Email
               </label>
               <input
+                onBlur={handleEmailBlur}
                 type="email"
                 className="form-control"
                 id="exampleInputEmail1"
@@ -50,6 +73,7 @@ const RegisterForm = () => {
                 Password
               </label>
               <input
+                onBlur={handlePasswordBlur}
                 type="password"
                 class="form-control"
                 id="exampleInputPassword1"
@@ -73,12 +97,13 @@ const RegisterForm = () => {
           </div>
 
           <button
-            type="button"
+            type="submit"
             className="login-btn btn btn-warning w-100 fw-bold fs-4"
           >
             Register
           </button>
         </form>
+
         <p className="bg-light rounded mx-auto my-3">
           <hr />
         </p>
