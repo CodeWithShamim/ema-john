@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import logo from "../../images/Logo.svg";
 import "./Header.css";
 // FontAwesomeIcon
@@ -8,8 +8,24 @@ import ActiveLink from "../ActiveLink/ActiveLink";
 import { Link } from "react-router-dom";
 // import { Link } from "react-router-dom";
 import loginIcon from "../../images/login-icon.png";
+import { onAuthStateChanged } from "firebase/auth";
+import { auth } from "../../firebase.init";
+
+// -----------------------------------------------------------
 
 const Header = () => {
+  // onAuthStateChanged(auth, (user) => {
+  //   if (user) {
+  //     // User is signed in, see docs for a list of available properties
+  //     // https://firebase.google.com/docs/reference/js/firebase.User
+  //     const uid = user.uid;
+  //     // ...
+  //   } else {
+  //     // User is signed out
+  //     // ...
+  //   }
+  // });
+
   return (
     <div className="row header-sticky">
       <nav className="header-nav col-md-12 header-sticky">
@@ -30,6 +46,7 @@ const Header = () => {
         </div>
         <div>
           <Link to="/login" className="text-light fw-bold me-2">
+            {/* {user.uid ? "Logout" : " Loginnnnnnn"} */}
             Login
             <span className="ms-1">
               <img
