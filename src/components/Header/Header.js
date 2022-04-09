@@ -1,4 +1,3 @@
-import React, { useEffect } from "react";
 import logo from "../../images/Logo.svg";
 import "./Header.css";
 // FontAwesomeIcon
@@ -7,25 +6,20 @@ import { faBars } from "@fortawesome/free-solid-svg-icons";
 import ActiveLink from "../ActiveLink/ActiveLink";
 import { Link } from "react-router-dom";
 // import { Link } from "react-router-dom";
-import loginIcon from "../../images/login-icon.png";
-import { onAuthStateChanged } from "firebase/auth";
+import icon from "../../images/login-icon.png";
 import { auth } from "../../firebase.init";
+import { useAuthState } from "react-firebase-hooks/auth";
+import { signOut } from "firebase/auth";
+import profileImg from "../../images/profile-img.png";
 
 // -----------------------------------------------------------
 
 const Header = () => {
-  // onAuthStateChanged(auth, (user) => {
-  //   if (user) {
-  //     // User is signed in, see docs for a list of available properties
-  //     // https://firebase.google.com/docs/reference/js/firebase.User
-  //     const uid = user.uid;
-  //     // ...
-  //   } else {
-  //     // User is signed out
-  //     // ...
-  //   }
-  // });
-
+  const [user] = useAuthState(auth);
+  console.log(user?.displayName);
+  const logout = () => {
+    signOut(auth);
+  };
   return (
     <div className="row header-sticky">
       <nav className="header-nav col-md-12 header-sticky">
@@ -37,25 +31,53 @@ const Header = () => {
         <label htmlFor="check" className="barIcon">
           <FontAwesomeIcon icon={faBars}></FontAwesomeIcon>
         </label>
-        <div className="me-5 header-info d-md-flex">
+        <div className="me-5 header-info d-md-flex align-items-md-center justify-content-md-center">
           <ActiveLink to="/shop">Shop</ActiveLink>
           <ActiveLink to="/order-review">Order Review</ActiveLink>
           <ActiveLink to="/manage-inventory">Manage Inventory</ActiveLink>
           <ActiveLink to="/about">About</ActiveLink>
           <ActiveLink to="/privacy&policy">Privacy & Policy</ActiveLink>
-        </div>
-        <div>
-          <Link to="/login" className="text-light fw-bold me-2">
-            {/* {user.uid ? "Logout" : " Loginnnnnnn"} */}
-            Login
-            <span className="ms-1">
-              <img
-                src={loginIcon}
-                alt="loginIcon"
-                style={{ width: "25px", height: "20px" }}
-              />
-            </span>
-          </Link>
+          {/* -------------------------------------- */}
+          <div>
+            {user?.uid ? (
+              <>
+                <div
+                  onClick={logout}
+                  to="/login"
+                  className="text-light fw-bold me-2"
+                >
+                  <span className="ms-1">
+                    Logout
+                    <img
+                      src={icon}
+                      alt="icon"
+                      style={{ width: "25px", height: "20px" }}
+                    />
+                  </span>
+                </div>
+              </>
+            ) : (
+              <Link to="/login" className="text-light fw-bold me-2">
+                <span className="ms-1">
+                  Login
+                  <img
+                    src={icon}
+                    alt="icon"
+                    style={{ width: "25px", height: "20px" }}
+                  />
+                </span>
+              </Link>
+            )}
+          </div>
+          {/* --------------------------------- */}
+          <div className="d-flex flex-column align-items-center py-2">
+            <img
+              className="profile-img"
+              src={user?.photoURL ? user?.photoURL : profileImg}
+              alt=""
+            />
+            <div className="fw-bold text-warning">{user?.displayName}</div>
+          </div>
         </div>
       </nav>
     </div>

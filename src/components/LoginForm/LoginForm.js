@@ -18,7 +18,7 @@ const LoginForm = () => {
   const [signInWithGoogle, googelUser] = useSignInWithGoogle(auth);
   const [SignInWithGithub, githubUser] = useSignInWithGithub(auth);
   const [SignInWithFacebook, facebookUser] = useSignInWithFacebook(auth);
-  console.log(githubUser, facebookUser, googelUser);
+  // console.log(githubUser, facebookUser, googelUser);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   //   -----------navigate-------------
