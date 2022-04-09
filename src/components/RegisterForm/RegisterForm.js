@@ -9,12 +9,22 @@ import twitter from "../../images/twitter.png";
 // firebae ------------------------------------------
 import { auth } from "../../firebase.init";
 import { createUserWithEmailAndPassword } from "firebase/auth";
+import {
+  useSignInWithFacebook,
+  useSignInWithGithub,
+  useSignInWithGoogle,
+} from "react-firebase-hooks/auth";
 
 const RegisterForm = () => {
+  const [signInWithGoogle, googelUser] = useSignInWithGoogle(auth);
+  const [SignInWithGithub, githubUser] = useSignInWithGithub(auth);
+  const [SignInWithFacebook, facebookUser] = useSignInWithFacebook(auth);
+
+  const navigate = useNavigate();
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   //   -----------navigate-------------
-  const navigate = useNavigate();
 
   const handleEmailBlur = (e) => {
     setEmail(e.target.value);
@@ -116,13 +126,26 @@ const RegisterForm = () => {
         <p>Continue With.... </p>
         <div className="icon-container d-flex justify-content-evenly">
           <span>
-            <img src={google} alt="google icon" />
+            <img
+              onClick={() => signInWithGoogle()}
+              src={google}
+              alt="google icon"
+            />
           </span>
           <span>
-            <img src={github} className="github-item" alt="github icon" />
+            <img
+              onClick={() => SignInWithGithub()}
+              src={github}
+              className="github-item"
+              alt="github icon"
+            />
           </span>
           <span>
-            <img src={facebook} alt="facebook icon" />
+            <img
+              onClick={() => SignInWithFacebook()}
+              src={facebook}
+              alt="facebook icon"
+            />
           </span>
           <span>
             <img src={twitter} alt="twitter icon" />

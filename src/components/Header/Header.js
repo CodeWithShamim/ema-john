@@ -4,13 +4,14 @@ import "./Header.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
 import ActiveLink from "../ActiveLink/ActiveLink";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 // import { Link } from "react-router-dom";
 import icon from "../../images/login-icon.png";
 import { auth } from "../../firebase.init";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { signOut } from "firebase/auth";
 import profileImg from "../../images/profile-img.png";
+import { useEffect } from "react";
 
 // -----------------------------------------------------------
 
@@ -20,6 +21,13 @@ const Header = () => {
   const logout = () => {
     signOut(auth);
   };
+  const navigate = useNavigate();
+  useEffect(() => {
+    if (user) {
+      navigate("/");
+    }
+  }, [user]);
+
   return (
     <div className="row header-sticky">
       <nav className="header-nav col-md-12 header-sticky">
