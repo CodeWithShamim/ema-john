@@ -4,7 +4,7 @@ import "./Header.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
 import ActiveLink from "../ActiveLink/ActiveLink";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 // import { Link } from "react-router-dom";
 import icon from "../../images/login-icon.png";
 import { auth } from "../../firebase.init";
@@ -18,13 +18,17 @@ import { useEffect } from "react";
 const Header = () => {
   const [user] = useAuthState(auth);
   console.log(user?.displayName);
+
+  // const navigate = useNavigate();
+
   const logout = () => {
     signOut(auth);
+    // navigate("/");
   };
-  const navigate = useNavigate();
+
   useEffect(() => {
     if (user) {
-      navigate("/");
+      // navigate("/");
     }
   }, [user]);
 
@@ -54,7 +58,7 @@ const Header = () => {
                   to="/login"
                   className="text-light fw-bold me-2"
                 >
-                  <span className="ms-1">
+                  <span className="ms-1 border rounded py-1 px-2">
                     Logout
                     <img
                       src={icon}
@@ -66,7 +70,7 @@ const Header = () => {
               </>
             ) : (
               <Link to="/login" className="text-light fw-bold me-2">
-                <span className="ms-1">
+                <span className="ms-1 border rounded py-1 px-2">
                   Login
                   <img
                     src={icon}

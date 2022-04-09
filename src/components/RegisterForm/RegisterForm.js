@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import logo from "../../images/Logo.svg";
 import google from "../../images/google.png";
 import github from "../../images/github.png";
@@ -16,11 +16,13 @@ import {
 } from "react-firebase-hooks/auth";
 
 const RegisterForm = () => {
-  const [signInWithGoogle, googelUser] = useSignInWithGoogle(auth);
-  const [SignInWithGithub, githubUser] = useSignInWithGithub(auth);
-  const [SignInWithFacebook, facebookUser] = useSignInWithFacebook(auth);
+  const [signInWithGoogle] = useSignInWithGoogle(auth);
+  const [SignInWithGithub] = useSignInWithGithub(auth);
+  const [SignInWithFacebook] = useSignInWithFacebook(auth);
 
   const navigate = useNavigate();
+  const location = useLocation();
+  const from = location.state?.from?.pathname || "/";
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -46,6 +48,7 @@ const RegisterForm = () => {
       })
       .catch((error) => console.log(error));
   };
+
   return (
     <div className="text-center">
       <div className="w-50 mx-auto login-container mt-3">
@@ -127,14 +130,22 @@ const RegisterForm = () => {
         <div className="icon-container d-flex justify-content-evenly">
           <span>
             <img
-              onClick={() => signInWithGoogle()}
+              onClick={() => {
+                signInWithGoogle().then(() =>
+                  navigate(from, { replace: true })
+                );
+              }}
               src={google}
               alt="google icon"
             />
           </span>
           <span>
             <img
-              onClick={() => SignInWithGithub()}
+              onClick={() => {
+                SignInWithGithub().then(() =>
+                  navigate(from, { replace: true })
+                );
+              }}
               src={github}
               className="github-item"
               alt="github icon"
@@ -142,7 +153,11 @@ const RegisterForm = () => {
           </span>
           <span>
             <img
-              onClick={() => SignInWithFacebook()}
+              onClick={() => {
+                SignInWithFacebook().then(() =>
+                  navigate(from, { replace: true })
+                );
+              }}
               src={facebook}
               alt="facebook icon"
             />

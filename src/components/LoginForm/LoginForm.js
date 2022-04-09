@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import logo from "../../images/Logo.svg";
 import google from "../../images/google.png";
 import github from "../../images/github.png";
@@ -15,14 +15,17 @@ import {
 } from "react-firebase-hooks/auth";
 
 const LoginForm = () => {
-  const [signInWithGoogle, googelUser] = useSignInWithGoogle(auth);
-  const [SignInWithGithub, githubUser] = useSignInWithGithub(auth);
-  const [SignInWithFacebook, facebookUser] = useSignInWithFacebook(auth);
+  const [signInWithGoogle] = useSignInWithGoogle(auth);
+  const [SignInWithGithub] = useSignInWithGithub(auth);
+  const [SignInWithFacebook] = useSignInWithFacebook(auth);
+
+  const navigate = useNavigate();
+  const location = useLocation();
+  const from = location.state?.from?.pathname || "/";
   // console.log(githubUser, facebookUser, googelUser);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   //   -----------navigate-------------
-  const navigate = useNavigate();
 
   const handleEmailBlur = (e) => {
     setEmail(e.target.value);
@@ -97,14 +100,22 @@ const LoginForm = () => {
         <div className="icon-container d-flex justify-content-evenly">
           <span>
             <img
-              onClick={() => signInWithGoogle()}
+              onClick={() => {
+                signInWithGoogle().then(() =>
+                  navigate(from, { replace: true })
+                );
+              }}
               src={google}
               alt="google icon"
             />
           </span>
           <span>
             <img
-              onClick={() => SignInWithGithub()}
+              onClick={() => {
+                SignInWithGithub().then(() =>
+                  navigate(from, { replace: true })
+                );
+              }}
               src={github}
               className="github-item"
               alt="github icon"
@@ -112,7 +123,11 @@ const LoginForm = () => {
           </span>
           <span>
             <img
-              onClick={() => SignInWithFacebook()}
+              onClick={() => {
+                SignInWithFacebook().then(() =>
+                  navigate(from, { replace: true })
+                );
+              }}
               src={facebook}
               alt="facebook icon"
             />
