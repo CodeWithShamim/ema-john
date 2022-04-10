@@ -62,21 +62,24 @@ const RegisterForm = () => {
       if (password !== confirmPassword) {
         setError("Password did not matched!!");
         return;
+      } else if (password.length < 6) {
+        setError("password at least 6 character or longer!!");
+        return;
+      } else {
+        createUserWithEmailAndPassword(auth, email, password)
+          .then((result) => {
+            // console.log(result.user);
+            updateProfile(auth.currentUser, {
+              displayName: name,
+              // photoURL: "https://example.com/jane-q-user/profile.jpg",
+            });
+
+            console.log(result);
+            console.log("succesfully register .....");
+            navigate("/");
+          })
+          .catch((error) => console.log(error));
       }
-
-      createUserWithEmailAndPassword(auth, email, password)
-        .then((result) => {
-          // console.log(result.user);
-          updateProfile(auth.currentUser, {
-            displayName: name,
-            // photoURL: "https://example.com/jane-q-user/profile.jpg",
-          });
-
-          console.log(result);
-          console.log("succesfully register .....");
-          navigate("/");
-        })
-        .catch((error) => console.log(error));
     } else {
       setError("ohh? you mistake some filled!!");
       return;
