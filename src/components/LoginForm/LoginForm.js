@@ -90,6 +90,9 @@ const LoginForm = () => {
             <p className="signup">
               Don't have an account? <Link to="/signup">sign up</Link>
             </p>
+            <span className="signup">
+              <Link to="/signup">Forgotten password?</Link>
+            </span>
           </div>
 
           <p className="fs-6 text-center text-warning">

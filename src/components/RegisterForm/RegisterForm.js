@@ -12,6 +12,7 @@ import twitter from "../../images/twitter.png";
 import {
   createUserWithEmailAndPassword,
   getAuth,
+  sendEmailVerification,
   updateProfile,
 } from "firebase/auth";
 import {
@@ -73,10 +74,12 @@ const RegisterForm = () => {
               displayName: name,
               // photoURL: "https://example.com/jane-q-user/profile.jpg",
             });
-
-            console.log(result);
-            console.log("succesfully register .....");
-            navigate("/");
+            // ---------------------------email-verification----------------
+            sendEmailVerification(auth.currentUser).then(() => {
+              console.log("Email verification sent!");
+            });
+            navigate("/email-confirmation");
+            // ---------------------------------------
           })
           .catch((error) => setError(error.message));
       }

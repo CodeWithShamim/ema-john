@@ -17,6 +17,7 @@ import RegisterForm from "./components/RegisterForm/RegisterForm";
 import RequireAuth from "./components/RequireAuth/RequireAuth";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth } from "./firebase.init";
+import EmailConfirmation from "./components/EmailConfirmation/EmailConfirmation";
 
 function App() {
   const [user] = useAuthState(auth);
@@ -36,6 +37,10 @@ function App() {
         )}
         <Route path="/signup" element={<RegisterForm></RegisterForm>}></Route>
         <Route path="/shop" element={<Shop></Shop>}></Route>
+        <Route
+          path="/email-confirmation"
+          element={<EmailConfirmation></EmailConfirmation>}
+        ></Route>
 
         <Route
           path="/order-review"
