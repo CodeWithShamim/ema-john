@@ -18,6 +18,8 @@ import RequireAuth from "./components/RequireAuth/RequireAuth";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth } from "./firebase.init";
 import EmailConfirmation from "./components/EmailConfirmation/EmailConfirmation";
+import ForgottenPassword from "./components/ForgottenPassword/ForgottenPassword";
+import ResetEmail from "./components/ResetEmail/ResetEmail";
 
 function App() {
   const [user] = useAuthState(auth);
@@ -37,9 +39,17 @@ function App() {
         )}
         <Route path="/signup" element={<RegisterForm></RegisterForm>}></Route>
         <Route path="/shop" element={<Shop></Shop>}></Route>
+
         <Route
           path="/email-confirmation"
           element={<EmailConfirmation></EmailConfirmation>}
+        ></Route>
+
+        <Route path="/reset-email" element={<ResetEmail></ResetEmail>}></Route>
+
+        <Route
+          path="/forgotten-password"
+          element={<ForgottenPassword></ForgottenPassword>}
         ></Route>
 
         <Route

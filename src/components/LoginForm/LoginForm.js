@@ -90,9 +90,6 @@ const LoginForm = () => {
             <p className="signup">
               Don't have an account? <Link to="/signup">sign up</Link>
             </p>
-            <span className="signup">
-              <Link to="/signup">Forgotten password?</Link>
-            </span>
           </div>
 
           <p className="fs-6 text-center text-warning">
@@ -111,6 +108,11 @@ const LoginForm = () => {
             Login
           </button>
         </form>
+        {/* -----------forgotton-password------------- */}
+        <p className="mt-3">
+          <Link to="/forgotten-password">Forgotten password?</Link>
+        </p>
+
         <p className="bg-light rounded mx-auto my-3">
           <hr />
         </p>
