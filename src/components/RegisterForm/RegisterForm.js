@@ -78,7 +78,7 @@ const RegisterForm = () => {
             console.log("succesfully register .....");
             navigate("/");
           })
-          .catch((error) => console.log(error));
+          .catch((error) => setError(error.message));
       }
     } else {
       setError("ohh? you mistake some filled!!");

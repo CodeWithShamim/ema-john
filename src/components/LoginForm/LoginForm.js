@@ -48,7 +48,7 @@ const LoginForm = () => {
           console.log("succesfully login .....");
           navigate("/");
         })
-        .catch((error) => setError("email or password is invalid!!"));
+        .catch((error) => setError(error.message));
     } else {
       setError("you mistake some filled!!");
     }
