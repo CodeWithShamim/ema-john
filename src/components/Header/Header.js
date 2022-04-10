@@ -17,7 +17,7 @@ import { useEffect } from "react";
 
 const Header = () => {
   const [user] = useAuthState(auth);
-  console.log(user?.displayName);
+  // console.log(user?.displayName);
 
   // const navigate = useNavigate();
 

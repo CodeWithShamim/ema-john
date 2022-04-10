@@ -13,6 +13,7 @@ import {
   useSignInWithGithub,
   useSignInWithGoogle,
 } from "react-firebase-hooks/auth";
+import errorIcon from "../../images/error.png";
 
 const LoginForm = () => {
   const [signInWithGoogle] = useSignInWithGoogle(auth);
@@ -25,6 +26,7 @@ const LoginForm = () => {
   // console.log(githubUser, facebookUser, googelUser);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
   //   -----------navigate-------------
 
   const handleEmailBlur = (e) => {
@@ -39,13 +41,17 @@ const LoginForm = () => {
   const handleLogin = (e) => {
     e.preventDefault();
     // console.log(email, password);
-    signInWithEmailAndPassword(auth, email, password)
-      .then((result) => {
-        console.log(result);
-        console.log("succesfully login .....");
-        navigate("/");
-      })
-      .catch((error) => console.log(error));
+    if (email && password) {
+      signInWithEmailAndPassword(auth, email, password)
+        .then((result) => {
+          console.log(result);
+          console.log("succesfully login .....");
+          navigate("/");
+        })
+        .catch((error) => console.log(error));
+    } else {
+      setError("you mistake some filled!!");
+    }
   };
 
   return (
@@ -85,6 +91,15 @@ const LoginForm = () => {
               Don't have an account? <Link to="/signup">sign up</Link>
             </p>
           </div>
+
+          <p className="fs-6 text-center text-warning">
+            {error && (
+              <>
+                <img src={errorIcon} alt="errorIcon" /> Error?
+              </>
+            )}{" "}
+            {error}
+          </p>
 
           <button
             type="submit"

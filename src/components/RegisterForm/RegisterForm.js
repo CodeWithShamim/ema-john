@@ -7,14 +7,22 @@ import facebook from "../../images/facebook.png";
 import twitter from "../../images/twitter.png";
 // import "./RegisterForm.css";
 // firebae ------------------------------------------
-import { auth } from "../../firebase.init";
-import { createUserWithEmailAndPassword } from "firebase/auth";
+// import { auth } from "../../firebase.init";
+
+import {
+  createUserWithEmailAndPassword,
+  getAuth,
+  updateProfile,
+} from "firebase/auth";
 import {
   useSignInWithFacebook,
   useSignInWithGithub,
   useSignInWithGoogle,
 } from "react-firebase-hooks/auth";
 import errorIcon from "../../images/error.png";
+import app from "../../firebase.init";
+
+const auth = getAuth(app);
 
 const RegisterForm = () => {
   const [signInWithGoogle] = useSignInWithGoogle(auth);
@@ -25,12 +33,16 @@ const RegisterForm = () => {
   const location = useLocation();
   const from = location.state?.from?.pathname || "/";
 
+  const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [error, setError] = useState("");
   //   -----------navigate-------------
 
+  const handleNameBlur = (e) => {
+    setName(e.target.value);
+  };
   const handleEmailBlur = (e) => {
     setEmail(e.target.value);
   };
@@ -46,16 +58,29 @@ const RegisterForm = () => {
   const handleRegister = (e) => {
     e.preventDefault();
     // console.log(email, password);
-    if (password !== confirmPassword) {
-      setError("Password did not matched!!");
+    if (name && email && password && confirmPassword) {
+      if (password !== confirmPassword) {
+        setError("Password did not matched!!");
+        return;
+      }
+
+      createUserWithEmailAndPassword(auth, email, password)
+        .then((result) => {
+          // console.log(result.user);
+          updateProfile(auth.currentUser, {
+            displayName: name,
+            // photoURL: "https://example.com/jane-q-user/profile.jpg",
+          });
+
+          console.log(result);
+          console.log("succesfully register .....");
+          navigate("/");
+        })
+        .catch((error) => console.log(error));
+    } else {
+      setError("ohh? you mistake some filled!!");
       return;
     }
-    createUserWithEmailAndPassword(auth, email, password).then((result) => {
-      console.log(result.user);
-      console.log("succesfully register .....");
-      navigate("/");
-    });
-    // .catch((error) => setError(error));
   };
 
   return (
@@ -70,6 +95,7 @@ const RegisterForm = () => {
                 Name
               </label>
               <input
+                onBlur={handleNameBlur}
                 type="text"
                 className="form-control"
                 id="exampleInputText"
