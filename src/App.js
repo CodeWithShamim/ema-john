@@ -15,8 +15,11 @@ import PrivacyPolicy from "./components/PrivacyPolicy/PrivacyPolicy";
 import LoginForm from "./components/LoginForm/LoginForm";
 import RegisterForm from "./components/RegisterForm/RegisterForm";
 import RequireAuth from "./components/RequireAuth/RequireAuth";
+import { useAuthState } from "react-firebase-hooks/auth";
+import { auth } from "./firebase.init";
 
 function App() {
+  const [user] = useAuthState(auth);
   useEffect(() => {
     AOS.init();
   }, []);
@@ -26,7 +29,11 @@ function App() {
       <Header></Header>
       <Routes>
         <Route path="/" element={<Shop></Shop>}></Route>
-        <Route path="/login" element={<LoginForm></LoginForm>}></Route>
+        {user ? (
+          <Route path="/login" element={<NotFound></NotFound>}></Route>
+        ) : (
+          <Route path="/login" element={<LoginForm></LoginForm>}></Route>
+        )}
         <Route path="/signup" element={<RegisterForm></RegisterForm>}></Route>
         <Route path="/shop" element={<Shop></Shop>}></Route>
 

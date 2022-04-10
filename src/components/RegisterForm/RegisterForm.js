@@ -14,6 +14,7 @@ import {
   useSignInWithGithub,
   useSignInWithGoogle,
 } from "react-firebase-hooks/auth";
+import errorIcon from "../../images/error.png";
 
 const RegisterForm = () => {
   const [signInWithGoogle] = useSignInWithGoogle(auth);
@@ -26,6 +27,8 @@ const RegisterForm = () => {
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+  const [error, setError] = useState("");
   //   -----------navigate-------------
 
   const handleEmailBlur = (e) => {
@@ -34,19 +37,25 @@ const RegisterForm = () => {
   const handlePasswordBlur = (e) => {
     setPassword(e.target.value);
   };
+  const handleConfirmPasswordBlur = (e) => {
+    setConfirmPassword(e.target.value);
+  };
   //   console.log(email, password);
 
   //   -----------------------------------------
   const handleRegister = (e) => {
     e.preventDefault();
-    console.log(email, password);
-    createUserWithEmailAndPassword(auth, email, password)
-      .then((result) => {
-        console.log(result.user);
-        console.log("succesfully register .....");
-        navigate("/");
-      })
-      .catch((error) => console.log(error));
+    // console.log(email, password);
+    if (password !== confirmPassword) {
+      setError("Password did not matched!!");
+      return;
+    }
+    createUserWithEmailAndPassword(auth, email, password).then((result) => {
+      console.log(result.user);
+      console.log("succesfully register .....");
+      navigate("/");
+    });
+    // .catch((error) => setError(error));
   };
 
   return (
@@ -100,15 +109,24 @@ const RegisterForm = () => {
             </div>
 
             <div class="mb-3">
-              <label for="exampleInputPassword2" class="form-label">
+              <label for="exampleInputConfirm-password" class="form-label">
                 Confirm Password
               </label>
               <input
+                onBlur={handleConfirmPasswordBlur}
                 type="password"
                 class="form-control"
-                id="exampleInputPassword2"
+                id="exampleInputConfirm-password"
               />
             </div>
+            <p className="fs-6 text-center text-warning">
+              {error && (
+                <>
+                  <img src={errorIcon} alt="errorIcon" /> Error,
+                </>
+              )}{" "}
+              {error}
+            </p>
 
             <p className="signup">
               Already have an account? <Link to="/login">login</Link>
