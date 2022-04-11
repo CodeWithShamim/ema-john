@@ -25,7 +25,10 @@ const ForgottenPassword = () => {
   return (
     <div className="text-center mt-5 email-container w-50 mx-auto">
       <h1 className="my-4">Reset your password!!</h1>
-      <form onSubmit={handleResetEmail}>
+      <p className="p-3">
+        Please enter your email address to reset your account password.
+      </p>
+      <form onSubmit={handleResetEmail} className="w-100">
         <input
           onBlur={handleEmailBlur}
           className="input-field"
@@ -36,7 +39,7 @@ const ForgottenPassword = () => {
         />{" "}
         <br />
         <input
-          className="mt-3 py-2 px-5 bg-primary fw-bold text-light fs-5 rounded"
+          className="my-4 py-2 bg-primary px-5 fw-bold  fs-5 rounded send-btn"
           type="submit"
           value="Send"
         />
