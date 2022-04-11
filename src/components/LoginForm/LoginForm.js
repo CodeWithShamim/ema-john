@@ -23,6 +23,7 @@ const LoginForm = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const from = location.state?.from?.pathname || "/";
+
   // console.log(githubUser, facebookUser, googelUser);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -46,7 +47,7 @@ const LoginForm = () => {
         .then((result) => {
           console.log(result);
           console.log("succesfully login .....");
-          navigate("/");
+          navigate(from, { replace: true });
         })
         .catch((error) => setError(error.message));
     } else {

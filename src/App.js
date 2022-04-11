@@ -20,6 +20,7 @@ import { auth } from "./firebase.init";
 import EmailConfirmation from "./components/EmailConfirmation/EmailConfirmation";
 import ForgottenPassword from "./components/ForgottenPassword/ForgottenPassword";
 import ResetEmail from "./components/ResetEmail/ResetEmail";
+import Shipment from "./components/Shipment/Shipment";
 
 function App() {
   const [user] = useAuthState(auth);
@@ -54,11 +55,7 @@ function App() {
 
         <Route
           path="/order-review"
-          element={
-            <RequireAuth>
-              <OrderReview></OrderReview>
-            </RequireAuth>
-          }
+          element={<OrderReview></OrderReview>}
         ></Route>
 
         <Route
@@ -70,6 +67,14 @@ function App() {
           }
         ></Route>
         <Route path="/about" element={<About></About>}></Route>
+        <Route
+          path="/shipment"
+          element={
+            <RequireAuth>
+              <Shipment></Shipment>
+            </RequireAuth>
+          }
+        ></Route>
         <Route
           path="/privacy&policy"
           element={<PrivacyPolicy></PrivacyPolicy>}
