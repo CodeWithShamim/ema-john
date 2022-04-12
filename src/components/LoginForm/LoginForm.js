@@ -17,8 +17,8 @@ import errorIcon from "../../images/error.png";
 
 const LoginForm = () => {
   const [signInWithGoogle] = useSignInWithGoogle(auth);
-  const [SignInWithGithub] = useSignInWithGithub(auth);
-  const [SignInWithFacebook] = useSignInWithFacebook(auth);
+  const [signInWithGithub] = useSignInWithGithub(auth);
+  const [signInWithFacebook] = useSignInWithFacebook(auth);
 
   const navigate = useNavigate();
   const location = useLocation();
@@ -133,7 +133,7 @@ const LoginForm = () => {
           <span>
             <img
               onClick={() => {
-                SignInWithGithub().then(() =>
+                signInWithGithub().then(() =>
                   navigate(from, { replace: true })
                 );
               }}
@@ -145,7 +145,7 @@ const LoginForm = () => {
           <span>
             <img
               onClick={() => {
-                SignInWithFacebook().then(() =>
+                signInWithFacebook().then(() =>
                   navigate(from, { replace: true })
                 );
               }}
