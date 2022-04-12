@@ -2,7 +2,12 @@ import React from "react";
 
 const PrivacyPolicy = () => {
   return (
-    <div className="container my-5">
+    <div
+      className="container my-5"
+      data-aos="fade-up"
+      data-aos-easing="linear"
+      data-aos-duration="500"
+    >
       <h2>What About Cookies and Other Identifiers?</h2>
       To enable our systems to recognize your browser or device and to provide
       and improve Ema-john Services, we use cookies and other identifiers. For

@@ -91,7 +91,12 @@ const RegisterForm = () => {
 
   return (
     <div className="text-center">
-      <div className="w-50 mx-auto login-container mt-3" data-aos="fade-down">
+      <div
+        className="w-50 mx-auto login-container mt-3"
+        data-aos="fade-down"
+        data-aos-easing="linear"
+        data-aos-duration="500"
+      >
         <img className="logo" src={logo} alt="logo" />
         <br />
         <form onSubmit={handleRegister}>

@@ -57,7 +57,12 @@ const LoginForm = () => {
 
   return (
     <div className="text-center">
-      <div className="w-50 mx-auto login-container mt-3" data-aos="fade-right">
+      <div
+        className="w-50 mx-auto login-container mt-3"
+        data-aos="fade-right"
+        data-aos-easing="linear"
+        data-aos-duration="500"
+      >
         <img className="logo" src={logo} alt="logo" />
         <br />
         <form onSubmit={handleLogin}>
