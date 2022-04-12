@@ -23,7 +23,12 @@ const ForgottenPassword = () => {
       });
   };
   return (
-    <div className="text-center mt-5 email-container w-50 mx-auto">
+    <div
+      className="text-center mt-5 email-container w-50 mx-auto"
+      data-aos="fade-down"
+      data-aos-easing="linear"
+      data-aos-duration="500"
+    >
       <h1 className="my-4">Reset your password!!</h1>
       <p className="p-3">
         Please enter your email address to reset your account password.

@@ -29,7 +29,12 @@ const Shipment = () => {
     console.log(name, phone, address);
   };
   return (
-    <div className="w-50 mx-auto login-container mt-3">
+    <div
+      className="w-50 mx-auto login-container mt-3"
+      data-aos="fade-right"
+      data-aos-easing="linear"
+      data-aos-duration="500"
+    >
       <form onSubmit={handleShipping}>
         <div className=" text-start ">
           <div class="mb-3">
