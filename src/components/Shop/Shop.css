@@ -1,7 +1,30 @@
+:root {
+    --bg-color: #ffe0b2;
+}
+
 .sticky-item {
     height: 100vh;
     position: sticky;
     top: 100px;
+}
+
+.pagination-container {
+    background-color: var(--bg-color);
+    box-sizing: border-box;
+    width: 100%;
+}
+
+.pagination-container button {
+    border: 1px solid red;
+    margin: 5px 15px;
+    color: aqua;
+    background-color: black;
+}
+
+.pagination-container .selected {
+    background-color: orange;
+    color: #fff;
+    font-weight: 700;
 }
 
 @media only screen and (max-width: 576px) {

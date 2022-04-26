@@ -9,10 +9,13 @@ import { addToDb, deleteShoppingCart } from "../../utilities/fakedb";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
+import { useState } from "react";
 
 const Shop = () => {
   // const [products, setProducts] = useProducts();
   const [products] = useProducts();
+  const [count, setCount] = useState(10);
+  const [page, setPage] = useState(0);
 
   // const [cart, setCart] = useState([]);
   //  // getStordCart
@@ -64,31 +67,43 @@ const Shop = () => {
   // console.log(cart);
 
   return (
-    <div className="shop-container row p-4">
-      <div className="products-container col-md-8 order-2 order-md-1">
-        <div className="row gy-5">
-          {products.map((product) => (
-            <Product
-              key={product.id}
-              product={product}
-              addToCart={addToCart}
-            ></Product>
-          ))}
+    <>
+      <div className="shop-container row p-4">
+        <div className="products-container col-md-8 order-2 order-md-1">
+          <div className="row gy-5">
+            {products.map((product) => (
+              <Product
+                key={product.id}
+                product={product}
+                addToCart={addToCart}
+              ></Product>
+            ))}
+          </div>
+        </div>
+        <div className="cart-container col-md-4 order-1 order-md-2">
+          <div className="sticky-item">
+            <Cart cart={cart} clearCart={clearCart}>
+              <Link to="/order-review">
+                <button className="border-0 px-3 py-2 fw-bold text-white bg-primary rounded m-3">
+                  Review Order{" "}
+                  <FontAwesomeIcon icon={faArrowRight}></FontAwesomeIcon>
+                </button>
+              </Link>
+            </Cart>
+          </div>
         </div>
       </div>
-      <div className="cart-container col-md-4 order-1 order-md-2">
-        <div className="sticky-item">
-          <Cart cart={cart} clearCart={clearCart}>
-            <Link to="/order-review">
-              <button className="border-0 px-3 py-2 fw-bold text-white bg-primary rounded m-3">
-                Review Order{" "}
-                <FontAwesomeIcon icon={faArrowRight}></FontAwesomeIcon>
-              </button>
-            </Link>
-          </Cart>
-        </div>
+      <div className="pagination-container py-3">
+        {[...Array(count).keys()].map((number) => (
+          <button
+            className={page === number ? "selected" : ""}
+            onClick={() => setPage(number)}
+          >
+            {number + 1}
+          </button>
+        ))}
       </div>
-    </div>
+    </>
   );
 };
 
