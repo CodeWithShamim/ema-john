@@ -24,7 +24,7 @@ const Shop = () => {
   //     const savedCart = []
   //     for(const id in storedCart){
   //         // console.log(id);
-  //         const findProduct = products.find(product=> product.id===id);
+  //         const findProduct = products.find(product=> product._id===id);
   //         if(findProduct){
   //             const quantity = storedCart[id];
   //             findProduct.quantity = quantity;
@@ -43,19 +43,19 @@ const Shop = () => {
   };
 
   const addToCart = (product) => {
-    const exits = cart.find((findItem) => findItem.id === product.id);
+    const exits = cart.find((findItem) => findItem._id === product._id);
     let newCart = [];
     if (!exits) {
       product.quantity = 1;
       newCart = [...cart, product];
     } else {
-      const rest = cart.filter((findItem) => findItem.id !== product.id);
+      const rest = cart.filter((findItem) => findItem._id !== product._id);
       exits.quantity = exits.quantity + 1;
       newCart = [...rest, exits];
     }
 
     setCart(newCart);
-    addToDb(product.id);
+    addToDb(product._id);
 
     // scrollin window for mobile devie
     // console.log(window.innerWidth);
@@ -73,7 +73,7 @@ const Shop = () => {
           <div className="row gy-5">
             {products.map((product) => (
               <Product
-                key={product.id}
+                key={product._id}
                 product={product}
                 addToCart={addToCart}
               ></Product>

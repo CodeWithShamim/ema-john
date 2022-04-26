@@ -16,7 +16,7 @@ const OrderReview = () => {
 
   const removeItem = (id) => {
     console.log(id);
-    const findProduct = cart.filter((item) => item.id !== id);
+    const findProduct = cart.filter((item) => item._id !== id);
     setCart(findProduct);
     // remove from local Storage
     removeFromDb(id);
@@ -33,7 +33,7 @@ const OrderReview = () => {
         <div className="products-container col-md-8">
           {cart.map((item) => (
             <ReviewItems
-              key={item.id}
+              key={item._id}
               item={item}
               removeItem={removeItem}
             ></ReviewItems>
