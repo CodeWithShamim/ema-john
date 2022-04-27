@@ -13,7 +13,7 @@ const Product = (props) => {
       data-aos="flip-left"
       data-aos-easing="linear"
       data-aos-duration="700"
-      className="product col-md-4"
+      className="product col-md-5 ms-0 ms-md-4"
     >
       <div className="text-center">
         <img src={img} alt="" className="img-fluid rounded" />

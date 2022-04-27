@@ -48,7 +48,7 @@
     display: none;
 }
 
-@media screen and (max-width: 1080px) {
+@media only screen and (max-width: 900px) {
     .barContainer {
         display: block;
     }
@@ -68,20 +68,22 @@
         left: -100%;
         display: flex;
         flex-direction: column;
-        align-items: center;
+        align-items: flex-end;
+        justify-content: flex-start;
         transition: all 0.5s;
     }
     .header-info a {
-        color: rgb(255, 255, 255);
-        font-size: 16px;
+        color: rgb(0, 0, 0);
+        font-size: 13px;
+        margin-top: 20px;
         cursor: pointer;
     }
-    a :hover {
+    a:hover {
         color: orange;
         background-color: none;
     }
     #check:checked~.header-info {
-        left: 0%;
+        left: -50%;
     }
 }
 

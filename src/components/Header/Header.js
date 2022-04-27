@@ -50,7 +50,7 @@ const Header = () => {
           <ActiveLink to="/about">About</ActiveLink>
           <ActiveLink to="/privacy&policy">Privacy & Policy</ActiveLink>
           {/* -------------------------------------- */}
-          <div>
+          <div className="mt-2">
             {user?.uid ? (
               <>
                 <div
@@ -82,7 +82,7 @@ const Header = () => {
             )}
           </div>
           {/* --------------------------------- */}
-          <div className="d-flex flex-column align-items-center py-2">
+          <div className="d-flex flex-column align-items-center p-3">
             <img
               className="profile-img"
               src={user?.photoURL ? user?.photoURL : profileImg}

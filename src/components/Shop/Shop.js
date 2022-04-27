@@ -68,8 +68,8 @@ const Shop = () => {
 
   return (
     <>
-      <div className="shop-container row">
-        <div className="container px-0 px-md-5 products-container col-md-9 order-2 order-md-1 row g-4">
+      <div className="shop-container row mx-3">
+        <div className="px-0 px-md-5 products-container col-md-9 order-2 order-md-1 row g-4 pb-5">
           {products.map((product) => (
             <Product
               key={product._id}
