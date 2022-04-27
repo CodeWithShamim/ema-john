@@ -9,30 +9,30 @@ import { addToDb, deleteShoppingCart } from "../../utilities/fakedb";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const Shop = () => {
   // const [products, setProducts] = useProducts();
-  const [products] = useProducts();
-  const [count, setCount] = useState(10);
+  const [products, setProducts] = useProducts();
+  const [count, setCount] = useState(0);
   const [page, setPage] = useState(0);
+  const [size, setSize] = useState(10);
 
-  // const [cart, setCart] = useState([]);
-  //  // getStordCart
-  //  useEffect(()=>{
-  //     const storedCart = getStoredCart();
-  //     const savedCart = []
-  //     for(const id in storedCart){
-  //         // console.log(id);
-  //         const findProduct = products.find(product=> product._id===id);
-  //         if(findProduct){
-  //             const quantity = storedCart[id];
-  //             findProduct.quantity = quantity;
-  //             savedCart.push(findProduct);
-  //         }
-  //     }
-  //     setCart(savedCart);
-  // },[products])
+  // get data for pagination_____________________________
+  useEffect(() => {
+    const url = `http://localhost:5000/product?page=${page}&size=${size}`;
+    fetch(url)
+      .then((res) => res.json())
+      .then((data) => setProducts(data));
+  }, [page, size]);
+  //_____________________________________________________
+  console.log(count);
+
+  useEffect(() => {
+    fetch("http://localhost:5000/productCount")
+      .then((res) => res.json())
+      .then((data) => setCount(Math.ceil(data.count / 10)));
+  }, []);
 
   const [cart, setCart] = useCart(products);
 
@@ -68,19 +68,17 @@ const Shop = () => {
 
   return (
     <>
-      <div className="shop-container row p-4">
-        <div className="products-container col-md-8 order-2 order-md-1">
-          <div className="row gy-5">
-            {products.map((product) => (
-              <Product
-                key={product._id}
-                product={product}
-                addToCart={addToCart}
-              ></Product>
-            ))}
-          </div>
+      <div className="shop-container row">
+        <div className="products-container col-md-9 order-2 order-md-1 row">
+          {products.map((product) => (
+            <Product
+              key={product._id}
+              product={product}
+              addToCart={addToCart}
+            ></Product>
+          ))}
         </div>
-        <div className="cart-container col-md-4 order-1 order-md-2">
+        <div className="cart-container col-md-3 order-1 order-md-2">
           <div className="sticky-item">
             <Cart cart={cart} clearCart={clearCart}>
               <Link to="/order-review">
@@ -93,6 +91,8 @@ const Shop = () => {
           </div>
         </div>
       </div>
+
+      {/* pagination */}
       <div className="pagination-container py-3">
         {[...Array(count).keys()].map((number) => (
           <button
@@ -102,6 +102,16 @@ const Shop = () => {
             {number + 1}
           </button>
         ))}
+
+        {/* --------------------- */}
+        <select onChange={(e) => setSize(e.target.value)}>
+          <option value="5">5</option>
+          <option value="10" selected>
+            10
+          </option>
+          <option value="15">15</option>
+          <option value="20">20</option>
+        </select>
       </div>
     </>
   );
