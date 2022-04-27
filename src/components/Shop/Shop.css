@@ -2,6 +2,11 @@
     --bg-color: #ffe0b2;
 }
 
+.row {
+    margin-right: 0px !important;
+    margin-left: 0px !important;
+}
+
 .sticky-item {
     height: 100vh;
     position: sticky;

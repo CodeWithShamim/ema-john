@@ -16,13 +16,15 @@ const Product = (props) => {
       className="product col-md-4"
     >
       <div className="text-center">
-        <img src={img} alt="" className="img-fluid w-100" />
+        <img src={img} alt="" className="img-fluid rounded" />
       </div>
-      <p className="product-name">{name}</p>
-      <p className="product-price">Price: ${price}</p>
-      <div className="product-info">
-        <p>Seller: {seller}</p>
-        <p>Ratings: {ratings}</p>
+      <div className="py-5">
+        <p className="product-name">{name}</p>
+        <p className="product-price">Price: ${price}</p>
+        <div className="product-info">
+          <p>Seller: {seller}</p>
+          <p>Ratings: {ratings}</p>
+        </div>
       </div>
       <button
         className="cartButton"
