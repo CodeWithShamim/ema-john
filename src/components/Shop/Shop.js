@@ -17,13 +17,19 @@ const Shop = () => {
   const [count, setCount] = useState(0);
   const [page, setPage] = useState(0);
   const [size, setSize] = useState(10);
+  const [loading, setLoading] = useState(false);
 
   // get data for pagination_____________________________
   useEffect(() => {
+    setLoading(true);
     const url = `https://ema-john-100.herokuapp.com/product?page=${page}&size=${size}`;
+
     fetch(url)
       .then((res) => res.json())
-      .then((data) => setProducts(data));
+      .then((data) => {
+        setLoading(false);
+        setProducts(data);
+      });
   }, [page, size]);
   //_____________________________________________________
   console.log(count);
@@ -71,11 +77,12 @@ const Shop = () => {
       <div className="shop-container row mx-3">
         <div className="px-0 px-md-5 products-container col-md-9 order-2 order-md-1 row g-4 pb-5">
           {" "}
-          {products.map((product) => (
+          {products?.map((product) => (
             <Product
               key={product._id}
               product={product}
               addToCart={addToCart}
+              loading={loading}
             ></Product>
           ))}{" "}
         </div>{" "}
