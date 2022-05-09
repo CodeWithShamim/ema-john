@@ -13,9 +13,9 @@ const Product = ({ product, loading, addToCart }) => {
   // mx-0 mx-md-4
   return (
     <div
-      data-aos="flip-left"
-      data-aos-easing="linear"
-      data-aos-duration="700"
+      // data-aos="flip-left"
+      // data-aos-easing="linear"
+      // data-aos-duration="700"
       className="product col-md-5 ms-0 ms-md-4"
     >
       {loading ? (
@@ -23,12 +23,11 @@ const Product = ({ product, loading, addToCart }) => {
           <SkeletonTheme color="#202020" highlightColor="#444">
             <p>
               <Skeleton
-                square
                 height={100}
                 width={100}
                 containerClassName="avatar-skeleton"
               />
-              <Skeleton count={6} />
+              <Skeleton count={8} />
             </p>
           </SkeletonTheme>
         </>

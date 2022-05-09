@@ -68,3 +68,8 @@
 .cart-container .title {
     text-align: center;
 }
+
+.skeleton {
+    z-index: 000000;
+    overflow: hidden;
+}
